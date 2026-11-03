@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="William Duan" />
+  <meta name="dcterms.date" content="2026-10-13" />
+  <title>Tutorial 6 Notes (2026–27)</title>
+  <style>:root{--paper:#f5f6f8;--sheet:#fff;--ink:#1a2130;--muted:#5a6475;--rule:#d9dde4;--accent:#1d5a86}
+@media (prefers-color-scheme:dark){:root{--paper:#11151c;--sheet:#181d26;--ink:#e3e7ee;--muted:#9aa4b4;--rule:#2c3441;--accent:#7fb2da;color-scheme:dark}}
+body{background:var(--sheet);color:var(--ink);font:400 1rem/1.65 "Literata",Georgia,serif;max-width:42rem;margin:0 auto;padding:2rem max(16px,env(safe-area-inset-left,0px)) 3rem}
+header{border-bottom:1px solid var(--rule);margin-bottom:1.5rem}
+h1.title{font-size:1.6rem;line-height:1.2;margin:0 0 .3rem}
+p.author,p.date{margin:0;color:var(--muted);font:400 .9rem "IBM Plex Sans",system-ui,sans-serif}
+p.date{margin-bottom:1rem}
+h2{font:600 1.05rem "IBM Plex Sans",system-ui,sans-serif;margin:2rem 0 .5rem;letter-spacing:.01em}
+a{color:var(--accent)}
+li{margin:.4rem 0}
+.webnote{font:400 .85rem "IBM Plex Sans",system-ui,sans-serif;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:.5rem .75rem;margin:0 0 1.5rem}
+mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
+table{border-collapse:collapse;margin:.75rem 0;font:400 .9rem "IBM Plex Sans",system-ui,sans-serif}
+th,td{border:1px solid var(--rule);padding:.3rem .6rem;text-align:left}
+figure{margin:1rem 0}
+figure img{max-width:100%;height:auto;background:#fff;border:1px solid var(--rule)}
+figcaption{font:400 .8rem "IBM Plex Sans",system-ui,sans-serif;color:var(--muted)}
+h1:not(.title){font:600 1.05rem "IBM Plex Sans",system-ui,sans-serif;margin:1.75rem 0 .4rem}
+h2{font:600 .95rem "IBM Plex Sans",system-ui,sans-serif;margin:1.2rem 0 .3rem}
+
+h2{font-size:1.15rem}
+p.subtitle{margin:0 0 .3rem;color:var(--muted);font:400 .95rem "IBM Plex Sans",system-ui,sans-serif}
+strong{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.95rem}
+em{color:var(--muted)}
+ol li{margin:.5rem 0}
+.footnotes{font-size:.85rem;color:var(--muted);margin-top:2rem}
+</style>
+</head>
+<body>
+<p class="dossier-back" style="margin:0 0 1rem;font:400 .85rem/1.4 system-ui,sans-serif"><a href="../" style="color:inherit">&larr; Teaching</a></p>
+<script id="dossier-back-hide">try{if(window.self!==window.top){document.querySelector(".dossier-back").hidden=true}}catch(e){}</script>
+<header id="title-block-header">
+<h1 class="title">Tutorial 6 Notes (2026–27)</h1>
+<p class="author">William Duan</p>
+<p class="date">October 13, 2026</p>
+</header>
+<p>These notes document what was covered in the tutorial session, for
+the benefit of future TAs. They are not intended as study material for
+students.</p>
+<h2 class="unnumbered" id="topics">Topics</h2>
+<p>The whole session went to the optional coding exercise in Part II of
+Problem Set 3: testing whether each subject in an experimental data set
+makes choices consistent with GARP. Five segments. (i) Reading the data
+— each subject faces the same 22 two-good budget lines, recorded by
+their intercepts, and picks one bundle on each. (ii) Extracting
+revealed-preference comparisons from a single budget line, and three
+ways of storing them: a list per observation, a single coded matrix, and
+a pair of matrices for weak and strict comparisons. (iii) What a
+violation looks like, namely a cycle of weak comparisons containing at
+least one strict link, and what to do about chosen bundles that sit
+slightly off their budget line. (iv) A cycle-finding algorithm:
+depth-first search from a starting observation, merging cycles that turn
+out to be purely weak, and removing a node once no violation passes
+through it. (v) Two ways to measure how bad a violation is, cycle length
+and the money pump index.</p>
+<p>The student-facing write-up of all of this is the GARP coding guide,
+which was revised from the 2021 handout to follow this session’s sketch.
+It contains the algorithm step by step and the pitfalls, so nothing
+below reproduces it. These notes record only the teaching side.</p>
+<h2 class="unnumbered" id="objective">Objective</h2>
+<p>The session’s theme is turning a definition into a procedure.
+Students have by this point seen GARP stated formally on the slides and
+used it in pen-and-paper questions with three or four observations,
+where a violation is found by staring at a diagram. With 22 observations
+per subject and 82 subjects, staring no longer works, and the exercise
+forces them to say precisely what they were doing when they stared. The
+thing to draw out is that GARP is a statement about cycles in a directed
+graph, so testing it is a graph search. Once that sentence lands, the
+rest of the session is bookkeeping.</p>
+<p>It is worth connecting this explicitly to Tutorial 5. Afriat’s
+theorem says that GARP is the <em>entire</em> testable content of
+utility maximization on finite data: if the test passes, a well-behaved
+utility function exists, and there is nothing further to check. So the
+code students write is not one test among many; it is the whole
+empirical content of the theory they have spent five weeks on. That
+framing makes an optional exercise feel less optional.</p>
+<h2 class="unnumbered" id="comments">Comments</h2>
+<ul>
+<li><p><em>Why spend a session on code.</em> The exercise is optional
+and language-agnostic, and first-year programming backgrounds are
+uneven. I did not teach syntax. The session stayed entirely at the level
+of the algorithm, on the view that a student who can state the procedure
+precisely can get any language (or a lightweight AI model, which the
+guide explicitly allows) to implement it, while a student who cannot
+state it will produce code that passes on the clean subjects and fails
+silently on the rest. This is a judgement worth keeping: the session is
+about precision of thought, and code is just the medium that punishes
+imprecision.</p></li>
+<li><p><em>The single-budget example.</em> I began with one budget line
+and four bundles: one chosen on the line, one strictly inside, one
+elsewhere on the line, and one outside. The first three give a strict
+comparison, a weak comparison and nothing respectively. The point I
+pressed hardest was the fourth: the chosen bundle being affordable and
+the outside bundle not affordable tells us <em>nothing</em>, and in
+particular it does not tell us that the outside bundle is weakly
+preferred to the chosen one. That needs its own check on the outside
+bundle’s budget. Treating “unaffordable” as “revealed worse” or
+“revealed better” is the natural slip here, and it is far easier to
+catch on the board than in someone’s code.</p></li>
+<li><p><em>Representations.</em> I offered three ways of storing the
+comparisons and recommended the third, two 0/1 matrices (one for weak
+and one for strict). The single matrix with codes 0, 1, 2 holds the same
+information, but every later step then has to decode it, and the
+two-matrix version makes the next step natural: the weak matrix
+<em>is</em> the adjacency matrix of the directed graph that the search
+runs on, and the strict matrix is the lookup table used to check a cycle
+once found. It is worth saying out loud that every strict link is also a
+weak one, so the strict matrix is contained in the weak one; students
+who build them independently sometimes get this wrong.</p></li>
+<li><p><em>Bundles off the budget line.</em> Recorded choices are
+rounded, so they rarely lie exactly on their budget line. In the session
+I offered two fixes: set the diagonal of the weak matrix to one by hand,
+or allow an epsilon of slack. When writing up the guide afterwards I
+found a cleaner statement that should replace both in future sessions:
+compare each bundle’s cost against what was <em>actually spent</em> at
+the chosen bundle, not against the full budget. This makes the diagonal
+correct automatically, and it removes a class of spurious violations —
+for example, a subject who chooses the identical bundle on two budgets,
+a hair inside both, shows up as strictly preferring each to the other
+under the full-budget comparison. A future TA should present the
+spending comparison directly rather than the two fixes I gave.</p></li>
+<li><p><em>The search.</em> The algorithm as presented: start a
+depth-first search from some observation along the weak links; whenever
+it returns to the start, check the cycle’s links against the strict
+matrix; if any is strict, stop with a violation; if all are weak, the
+observations on the cycle are revealed indifferent, so merge them into
+one node and continue; once the search from a node finds nothing, remove
+the node. I drew the search itself as a tree — go to the bottom of one
+branch, back up one step, try the next — which was enough for students
+who had not seen DFS before.</p>
+<p>Two details deserve explicit emphasis. First, a link into or out of a
+merged node stands for several original links and is strict if
+<em>any</em> of them is; the board reminder was to recheck each one.
+Second, a strict link between two members of a merged node is already a
+violation, since they lie on a common weak cycle. The second was not on
+the board and was added in the guide. Both are the kind of thing a
+student’s code gets wrong without anyone noticing.</p>
+<p>A future TA should know that the textbook approach is different and
+arguably simpler: compute the transitive closure of the weak matrix
+(Warshall’s algorithm, as in Varian’s 1982 implementation), and the data
+violate GARP exactly when some observation is revealed weakly preferred
+to another that is directly strictly revealed preferred to it. With 22
+observations the cost is trivial. The search-and-merge version has two
+advantages: it hands back the violating cycle itself as evidence, which
+the closure does not do without extra work, and the merge step makes
+students say why weak cycles are harmless. Either is defensible. The
+closure version is less error-prone for weak programmers, and is worth
+mentioning as an alternative even if the search is what gets
+taught.</p></li>
+<li><p><em>Measuring violations.</em> The session closed with two ways
+to grade a failure rather than just record it. Cycle length, where a
+two-step cycle is a direct contradiction and a long chain a subtler one,
+and the money pump index: shrink each budget on the cycle until the next
+bundle stops being strictly affordable, and the total shrinkage relative
+to total spending is the money an arbitrageur could extract per lap. The
+motivation that worked was that a pass/fail test treats a rounding slip
+and a wild inconsistency the same, and the data contain both. The guide
+adds Afriat’s efficiency index (shrinking every budget at once), which
+was <em>not</em> covered in the session; a future TA with time could add
+it, since it is the measure students will meet in the empirical
+literature.</p></li>
+</ul>
+<h2 class="unnumbered" id="practical-notes">Practical notes</h2>
+<p>This session works only if students have the data and the problem set
+in front of them; I put the first rows of the data on screen and worked
+from them. A future TA should run their own implementation on the data
+before the session, since students will ask why their counts differ.</p>
+<p>If time is short, cut the extensions segment; the guide covers it
+adequately in writing. The single-budget example and the off-budget
+pitfall should not be cut, since those are where student code actually
+goes wrong.</p>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="William Duan" />
+  <meta name="dcterms.date" content="2026-10-06" />
+  <title>Tutorial 5 Notes (2026–27)</title>
+  <style>:root{--paper:#f5f6f8;--sheet:#fff;--ink:#1a2130;--muted:#5a6475;--rule:#d9dde4;--accent:#1d5a86}
+@media (prefers-color-scheme:dark){:root{--paper:#11151c;--sheet:#181d26;--ink:#e3e7ee;--muted:#9aa4b4;--rule:#2c3441;--accent:#7fb2da;color-scheme:dark}}
+body{background:var(--sheet);color:var(--ink);font:400 1rem/1.65 "Literata",Georgia,serif;max-width:42rem;margin:0 auto;padding:2rem max(16px,env(safe-area-inset-left,0px)) 3rem}
+header{border-bottom:1px solid var(--rule);margin-bottom:1.5rem}
+h1.title{font-size:1.6rem;line-height:1.2;margin:0 0 .3rem}
+p.author,p.date{margin:0;color:var(--muted);font:400 .9rem "IBM Plex Sans",system-ui,sans-serif}
+p.date{margin-bottom:1rem}
+h2{font:600 1.05rem "IBM Plex Sans",system-ui,sans-serif;margin:2rem 0 .5rem;letter-spacing:.01em}
+a{color:var(--accent)}
+li{margin:.4rem 0}
+.webnote{font:400 .85rem "IBM Plex Sans",system-ui,sans-serif;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:.5rem .75rem;margin:0 0 1.5rem}
+mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
+table{border-collapse:collapse;margin:.75rem 0;font:400 .9rem "IBM Plex Sans",system-ui,sans-serif}
+th,td{border:1px solid var(--rule);padding:.3rem .6rem;text-align:left}
+figure{margin:1rem 0}
+figure img{max-width:100%;height:auto;background:#fff;border:1px solid var(--rule)}
+figcaption{font:400 .8rem "IBM Plex Sans",system-ui,sans-serif;color:var(--muted)}
+h1:not(.title){font:600 1.05rem "IBM Plex Sans",system-ui,sans-serif;margin:1.75rem 0 .4rem}
+h2{font:600 .95rem "IBM Plex Sans",system-ui,sans-serif;margin:1.2rem 0 .3rem}
+
+h2{font-size:1.15rem}
+p.subtitle{margin:0 0 .3rem;color:var(--muted);font:400 .95rem "IBM Plex Sans",system-ui,sans-serif}
+strong{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.95rem}
+em{color:var(--muted)}
+ol li{margin:.5rem 0}
+.footnotes{font-size:.85rem;color:var(--muted);margin-top:2rem}
+</style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<p class="dossier-back" style="margin:0 0 1rem;font:400 .85rem/1.4 system-ui,sans-serif"><a href="../" style="color:inherit">&larr; Teaching</a></p>
+<script id="dossier-back-hide">try{if(window.self!==window.top){document.querySelector(".dossier-back").hidden=true}}catch(e){}</script>
+<header id="title-block-header">
+<h1 class="title">Tutorial 5 Notes (2026–27)</h1>
+<p class="author">William Duan</p>
+<p class="date">October 6, 2026</p>
+</header>
+<p>These notes document what was covered in the tutorial session, for
+the benefit of future TAs. They are not intended as study material for
+students.</p>
+<h2 class="unnumbered" id="topics">Topics</h2>
+<p>Four segments, running from welfare measurement to the recoverability
+of preferences from choice data. (i) A high-level discussion of why
+consumer surplus is not a well-defined welfare measure once more than
+one price moves, and why the compensated measures do not suffer from the
+problem. (ii) The duality chain assembled as a single diagram —
+Marshallian demand, indirect utility, the expenditure function and
+Hicksian demand, with Roy’s identity, the envelope theorem and
+Shephard’s lemma as the arrows between them — derived from the identity
+relating the value and expenditure functions. (iii) Recovering the
+indirect utility function from Marshallian demand by differentiating
+along one of its level sets, which yields an ordinary differential
+equation whose only input is observed demand. (iv) Afriat’s theorem,
+approached through the geometric construction of a rationalizing utility
+function, ending at the point where the constructed function is seen to
+take a minimum-of-affine-functions form.</p>
+<p>This session was free-standing: it was not tied to a problem set, and
+no time was given to Problem Set 2 even though it was due three days
+later. The technical side of the welfare material is on the lecture
+slides, which also state GARP formally.</p>
+<h2 class="unnumbered" id="objective">Objective</h2>
+<p>The session has an obvious seam in the middle — welfare on one side,
+Afriat on the other — and it is worth telling students what holds the
+two halves together, because they will not see it otherwise. The common
+question is how much of a consumer’s preference can be recovered from
+what we observe her do, and the segments answer it at progressively
+weaker levels of data. The duality chain says that the four standard
+objects are interconvertible, so observing any one of them is observing
+all of them. The differential equation in segment (iii) says that the
+Marshallian demand function alone pins down the shape of the
+indifference map, though not the utility numbers attached to it.
+Afriat’s theorem says that even a <em>finite</em> set of observed
+choices suffices, provided it satisfies GARP. Welfare measurement is
+then the application that motivates the whole apparatus: the measure we
+want is defined on an object we cannot observe, and duality is what gets
+us there from one we can.</p>
+<h2 class="unnumbered" id="comments">Comments</h2>
+<ul>
+<li><p><em>Welfare, kept deliberately high-level.</em> The slides
+already handle the technical content of this material well — the
+definitions of equivalent and compensating variation, the integral
+expressions, the comparisons — and I did not think I had much to add on
+that side. The session instead supplied an interpretive frame: what the
+measures are <em>for</em>, and why one of them misbehaves. This is a
+judgement call worth recording as such, because the general question of
+where a tutorial adds value relative to the lectures recurs every week,
+and re-deriving what the slides already derive is the default way to
+waste a session.</p>
+<p>The frame used: consumer surplus is an area under a demand curve, so
+computing it when several prices move means integrating along a path
+through price space, and there is no reason the answer should be
+independent of the path chosen. Marshallian demand carries both the
+substitution and the income effect, and the income effect of a change in
+one price feeds into the response to the next, so the order in which you
+integrate changes the number you get. Compensated demand carries only
+the substitution effect and the problem does not arise. I used an
+improvised linear three-good demand system with two prices moving to
+make the point concrete.</p>
+<p>An aside that landed well, and is worth keeping: suppose the price of
+coke and the price of rent both rise by two percent. Take the coke
+increase first, and its income effect lowers the consumer’s rent
+consumption, so the rent integral is evaluated along a lower demand
+curve than it would have been. Take them in the other order and the same
+logic runs the other way. The order of integration is not a
+technicality; it is the income effect leaking between goods. Two
+concrete goods with wildly different budget shares make this much easier
+to see than an abstract <span class="math inline">\(p_1\)</span> and
+<span class="math inline">\(p_2\)</span>.</p>
+<p>What was <em>not</em> done, and should be flagged for anyone building
+from these notes: only equivalent variation was defined, compensating
+variation was not, and the reason the compensated line integral is
+path-independent — symmetry of the Slutsky matrix, or equivalently the
+expenditure function serving as a potential — was asserted rather than
+explained. Either would be a reasonable addition if the session has
+room.</p></li>
+<li><p><em>The duality chain.</em> The centrepiece, and the thing most
+worth preserving from this session: the four objects drawn in one boxed
+diagram, with the named results labelling the arrows between them rather
+than being presented as four separate theorems. Students meet Roy’s
+identity, the envelope theorem and Shephard’s lemma in different
+lectures and file them as unrelated machinery; seeing them as the edges
+of a single closed loop is the point of putting them together.</p>
+<p>The derivation I used runs through the identity saying that utility
+evaluated at the cheapest bundle attaining a given utility level returns
+that level. Differentiating it totally in prices, recognising the
+derivative of the expenditure function as Hicksian demand, and
+rearranging produces Roy’s identity directly. This is worth doing rather
+than quoting, because it makes visible that the loop closes — the same
+identity, read in two directions, gives both of the results it
+connects.</p>
+<p>Two annotations to make explicitly while drawing, since both are
+invertibility claims that students skate over. The value function is
+strictly increasing in wealth, so for a fixed price vector exactly one
+wealth level attains a given utility, which is what licenses passing
+from the value function to the expenditure function. The expenditure
+function is strictly increasing in the utility level, for the same
+obvious reason, which licenses the return trip. Without those two
+observations the diagram is a picture of four objects rather than an
+argument.</p></li>
+<li><p><em>Recovering the indirect utility function.</em> A short
+segment and a satisfying one. Fix a level set of the value function —
+the set of price-wealth pairs delivering some fixed utility — and
+differentiate along it. The resulting differential equation has a
+right-hand side that involves only Marshallian demand, so demand data
+are sufficient to trace out the level sets.</p>
+<p>The conclusion to state carefully, because the careless version is
+wrong: what the equation recovers is the <em>shape</em> of the
+indifference map, not the utility numbers attached to it. That is
+exactly what one should expect given everything the course has said
+about ordinality, and it is worth saying so out loud, since it turns a
+technical result into a confirmation of something they already believe.
+It also sets up Afriat, which is the same claim with the data thinned
+from a whole demand function down to finitely many
+observations.</p></li>
+<li><p><em>Afriat’s theorem.</em> Stated in the usual four-part
+equivalent form. The thing to emphasise is which implication carries the
+content: the step from GARP, an empirically checkable condition on the
+data, to the existence of a utility function that is not merely locally
+nonsatiated but continuous, strictly increasing and concave. Getting
+such a well-behaved rationalization out of a finite consistency check is
+genuinely surprising and students should be told that it is.</p>
+<p>The approach that worked was to build the construction up
+geometrically, in order, letting each picture fail before fixing it.
+Start with a single observed bundle on a single budget line and ask what
+it would mean to rationalize it: draw an indifference curve tangent to
+the budget at the observed point. Add a second observation on a
+different budget line and do the same. Now notice that the two smooth
+curves drawn this way cross, which no indifference map may do. The
+repair is to replace the smooth curves with piecewise-linear ones,
+taking the slope from the budget line through the observed bundle — that
+part is forced, since the tangency is what rationalization means — and
+leaving the intercept free. The free intercept is the multiplier, and
+what it does is locate the kink. Once the kinks are positioned so that
+the curves do not cross, the whole family can be drawn. Finally, show a
+configuration violating the axiom and let the class try: there is no way
+to position the kinks, and the impossibility of drawing the family is
+the geometric content of the theorem.</p>
+<p>That last picture is the one that does the teaching, and it is worth
+leaving time for students to attempt it themselves before showing them
+it cannot be done.</p>
+<p>The session ended at the observation that the utility function
+assembled this way is a minimum over the observations of affine
+functions, one per observation, with the multiplier as the coefficient.
+Why a minimum rather than a maximum is worth a moment: the lower
+envelope of a family of affine functions is concave and the upper
+envelope is convex, and concavity is precisely the property the strong
+form of the theorem promises. A quick sketch of each envelope makes the
+point faster than any argument.</p>
+<p>Nothing beyond that was covered — the verification that the
+constructed function actually rationalizes the data, and that it has the
+three properties claimed, was not attempted. In past years those
+verifications have been set as a problem set question rather than done
+in tutorial, so a future TA should check whether the current year’s
+Problem Set 3 does the same before deciding to spend session time on
+them.</p></li>
+<li><p><em>GARP against WARP.</em> Flagged in passing that GARP is the
+stronger axiom, but not demonstrated, and GARP itself was not restated
+since the lecture slides give it formally. Worth being candid about why
+the demonstration was skipped: a configuration satisfying WARP while
+violating GARP appears to require at least three goods, which makes it
+hard to put on a board. The obstacle looks to be a real theorem rather
+than a failure of ingenuity — with two goods and budget exhaustion the
+axioms essentially coincide (Rose, 1958), and the standard separating
+example (Gale, 1960) uses three goods — but a future TA who wants to
+present this should check those references before relying on them, and
+should be aware that the finite-data versions of these statements need
+more care than the demand-function versions.</p>
+<p>If the point is worth making properly, the options are to present a
+three-good numerical example as a table of choices rather than a
+diagram, or to leave the axiom comparison to the problem set and simply
+assert the ranking here, which is what was done.</p></li>
+</ul>
+<h2 class="unnumbered" id="practical-notes">Practical notes</h2>
+<p>The session was free-standing, built around neither a problem set nor
+a specific lecture, and it works as a consolidation session: everything
+in it had already appeared on the slides in some form, and the value
+added was in assembling the pieces into one diagram and one question. If
+a future year’s schedule is tighter, segments (i) and (iii) are the
+compressible ones; the duality diagram and the Afriat construction are
+what justify the session.</p>
+<p>Problem Set 2 was due three days after this session and received no
+time at all. That was not a considered decision so much as a consequence
+of the material running long, and a future TA should decide deliberately
+rather than by default — a short logistics slot at the start costs
+little.</p>
+<p>On ordering: welfare first works because it motivates wanting the
+compensated objects, which motivates the duality chain, which is then
+the natural place to draw the diagram. Afriat sits at the end because it
+is the most self-contained segment and the easiest to truncate, which is
+what happened. Anyone planning this session should plan to stop at the
+minimum-of-affine-functions form and treat anything past it as a
+bonus.</p>
+</body>
+</html>

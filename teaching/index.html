@@ -103,6 +103,16 @@ footer{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--rule);fo
 .sitenav .sep{width:1px;align-self:stretch;background:var(--rule);margin:0 .35rem;flex:none}
 .frame.pdf{aspect-ratio:auto;height:85vh;min-height:30rem}
 .boxbar .openlink{margin-left:auto;padding:.5rem .8rem}
+/* materials lists */
+.mgroup{display:grid;gap:.5rem;max-width:var(--col)}
+.mhead{font-size:1.05rem}
+.matlist{list-style:none;margin:0;padding:0;background:var(--sheet);border:1px solid var(--rule);border-radius:6px}
+.matlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.15rem 1rem;padding:.65rem .9rem;border-bottom:1px solid var(--rule)}
+.matlist li:last-child{border-bottom:0}
+.matlist a{font-weight:500}
+.matlist .meta{font-size:.85rem;color:var(--muted);white-space:nowrap}
+.matlist .mnote{grid-column:1/-1;font-size:.88rem;color:var(--muted)}
+@media (max-width:520px){.matlist li{grid-template-columns:minmax(0,1fr)}}
 /* views */
 .js-views .view{display:none}
 .js-views .view.on{display:grid}
@@ -257,43 +267,30 @@ nav.courses a:hover{border-color:var(--accent)}
   <div data-evals="ECON 600"></div>
 
   <p class="sub">Materials</p>
-  <div class="items-wrap">
-    <article class="item">
-      <div class="box">
-        <div class="boxbar"><span class="boxtitle">Tutorial outline</span><a target="_blank" rel="noopener" class="openlink" href="materials/econ600-tutorial-outline.html">Open full page</a></div>
-        <div class="frame tall"><iframe src="materials/econ600-tutorial-outline.html" title="Teaching material" loading="lazy"></iframe></div>
-      </div>
-      <div class="commentary">
-        <span class="eyebrow">Fall 2025 and 2026</span>
-        <h3>Tutorial outline</h3>
-        <p>Objectives and a week-by-week plan for the tutorials, with notes on how each year differed.</p>
-      </div>
-    </article>
-
-    <article class="item">
-      <div class="box">
-        <div class="boxbar"><span class="boxtitle">GARP Coding Guide</span><a target="_blank" rel="noopener" class="openlink" href="materials/garp-coding-guide.html">Open full page</a></div>
-        <div class="frame tall"><iframe src="materials/garp-coding-guide.html" title="Teaching material" loading="lazy"></iframe></div>
-      </div>
-      <div class="commentary">
-        <span class="eyebrow">Fall 2026</span>
-        <h3>Testing GARP on real choices</h3>
-        <p>Student guide to the optional coding exercise in Problem Set 3, revised from the 2021 handout.</p>
-        <p class="note">Answer-check section removed from this copy.</p>
-      </div>
-    </article>
-
-    <article class="item">
-      <div class="box">
-        <div class="boxbar"><span class="boxtitle">Tutorial 7 notes</span><a target="_blank" rel="noopener" class="openlink" href="materials/econ600-tutorial-7-notes.html">Open full page</a></div>
-        <div class="frame tall"><iframe src="materials/econ600-tutorial-7-notes.html" title="Teaching material" loading="lazy"></iframe></div>
-      </div>
-      <div class="commentary">
-        <span class="eyebrow">Fall 2026</span>
-        <h3>Tutorial 7, choice under risk</h3>
-        <p>Written after each tutorial for future teaching assistants. Internal file references, a problem-set follow-up and comments on a past answer key removed.</p>
-      </div>
-    </article>
+  <div class="mgroup">
+    <h3 class="mhead">Tutorial plan</h3>
+    <ul class="matlist">
+      <li><a target="_blank" rel="noopener" href="materials/econ600-tutorial-outline.html">Tutorial outline</a><span class="meta">Fall 2025 and 2026</span><span class="mnote">Objectives and a week-by-week plan, with notes on how each year differed</span></li>
+    </ul>
+  </div>
+  <div class="mgroup">
+    <h3 class="mhead">Tutorial notes, Fall 2026</h3>
+    <p class="note">Written after each tutorial for future teaching assistants. Public copies omit internal file references and worked solutions to problem-set questions.</p>
+    <ul class="matlist">
+      <li><a target="_blank" rel="noopener" href="materials/econ600-tutorial-1-notes.html">Tutorial 1, preference, choice and WARP</a><span class="meta">September 8</span></li>
+      <li><a target="_blank" rel="noopener" href="materials/econ600-tutorial-2-notes.html">Tutorial 2, continuity and utility representation</a><span class="meta">September 15</span></li>
+      <li><a target="_blank" rel="noopener" href="materials/econ600-tutorial-3-notes.html">Tutorial 3, the utility maximization problem</a><span class="meta">September 22</span></li>
+      <li><a target="_blank" rel="noopener" href="materials/econ600-tutorial-4-notes.html">Tutorial 4, proving results from the structure of the problem</a><span class="meta">September 29</span></li>
+      <li><a target="_blank" rel="noopener" href="materials/econ600-tutorial-5-notes.html">Tutorial 5, duality and Afriat's theorem</a><span class="meta">October 6</span></li>
+      <li><a target="_blank" rel="noopener" href="materials/econ600-tutorial-6-notes.html">Tutorial 6, testing GARP in code</a><span class="meta">October 13</span></li>
+      <li><a target="_blank" rel="noopener" href="materials/econ600-tutorial-7-notes.html">Tutorial 7, choice under risk</a><span class="meta">October 20</span></li>
+    </ul>
+  </div>
+  <div class="mgroup">
+    <h3 class="mhead">Student guide</h3>
+    <ul class="matlist">
+      <li><a target="_blank" rel="noopener" href="materials/garp-coding-guide.html">Testing GARP on real choices</a><span class="meta">Fall 2026</span><span class="mnote">Guide to the optional coding exercise in Problem Set 3, revised from the 2021 handout. Answer-check section removed from this copy.</span></li>
+    </ul>
   </div>
   <nav class="nextcourse" data-next-for="econ600" aria-label="Next course"></nav>
 </section>
@@ -309,18 +306,11 @@ nav.courses a:hover{border-color:var(--accent)}
   <div data-evals="ECON 601"></div>
 
   <p class="sub">Materials</p>
-  <div class="items-wrap">
-    <article class="item">
-      <div class="box">
-        <div class="boxbar"><span class="boxtitle">Tutorial outline</span><a target="_blank" rel="noopener" class="openlink" href="materials/econ601-tutorial-outline.html">Open full page</a></div>
-        <div class="frame tall"><iframe src="materials/econ601-tutorial-outline.html" title="Teaching material" loading="lazy"></iframe></div>
-      </div>
-      <div class="commentary">
-        <span class="eyebrow">Winter 2026</span>
-        <h3>Tutorial outline</h3>
-        <p>Objectives and a week-by-week plan for the tutorials.</p>
-      </div>
-    </article>
+  <div class="mgroup">
+    <h3 class="mhead">Tutorial plan</h3>
+    <ul class="matlist">
+      <li><a target="_blank" rel="noopener" href="materials/econ601-tutorial-outline.html">Tutorial outline</a><span class="meta">Winter 2026</span><span class="mnote">Objectives and a week-by-week plan</span></li>
+    </ul>
   </div>
   <nav class="nextcourse" data-next-for="econ601" aria-label="Next course"></nav>
 </section>
@@ -346,24 +336,14 @@ nav.courses a:hover{border-color:var(--accent)}
   <p class="sub">Evaluations</p>
   <div data-evals="ECON 101"></div>
   <p class="sub">Materials</p>
-  <div class="items-wrap">
-    <article class="item">
-      <div class="box" data-tabs>
-        <div class="boxbar" role="tablist" aria-label="ECON 101 worksheets">
-          <button role="tab" aria-selected="true" data-src="materials/econ101-week1.html" data-open="materials/econ101-week1.html">Week 1</button>
-          <button role="tab" aria-selected="false" data-src="materials/econ101-week2.html" data-open="materials/econ101-week2.html">Week 2</button>
-          <button role="tab" aria-selected="false" data-src="materials/econ101-week10.html" data-open="materials/econ101-week10.html">Week 10</button>
-          <a target="_blank" rel="noopener" class="openlink" href="materials/econ101-week1.html">Open full page</a>
-        </div>
-        <div class="frame"><iframe src="materials/econ101-week1.html" title="Teaching material" loading="lazy"></iframe></div>
-      </div>
-      <div class="commentary">
-        <span class="eyebrow">Fall 2020</span>
-        <h3>Discussion worksheets</h3>
-        <p>Three worksheets I wrote for my sections, on comparative advantage, supply and demand, and costs. Minor typos corrected.</p>
-        <p class="note">The other weeks used materials prepared by the instructor or another teaching assistant.</p>
-      </div>
-    </article>
+  <div class="mgroup">
+    <h3 class="mhead">Discussion worksheets, Fall 2020</h3>
+    <p class="note">Worksheets I wrote for my sections, with minor typos corrected. The other weeks used materials prepared by the instructor or another teaching assistant.</p>
+    <ul class="matlist">
+      <li><a target="_blank" rel="noopener" href="materials/econ101-week1.html">Week 1, comparative advantage</a><span class="meta">Fall 2020</span></li>
+      <li><a target="_blank" rel="noopener" href="materials/econ101-week2.html">Week 2, supply and demand</a><span class="meta">Fall 2020</span></li>
+      <li><a target="_blank" rel="noopener" href="materials/econ101-week10.html">Week 10, costs</a><span class="meta">Fall 2020</span></li>
+    </ul>
   </div>
   <nav class="nextcourse" data-next-for="econ101" aria-label="Next course"></nav>
 </section>

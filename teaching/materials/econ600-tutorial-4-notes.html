@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="William Duan" />
+  <meta name="dcterms.date" content="2026-09-29" />
+  <title>Tutorial 4 Notes (2026–27)</title>
+  <style>:root{--paper:#f5f6f8;--sheet:#fff;--ink:#1a2130;--muted:#5a6475;--rule:#d9dde4;--accent:#1d5a86}
+@media (prefers-color-scheme:dark){:root{--paper:#11151c;--sheet:#181d26;--ink:#e3e7ee;--muted:#9aa4b4;--rule:#2c3441;--accent:#7fb2da;color-scheme:dark}}
+body{background:var(--sheet);color:var(--ink);font:400 1rem/1.65 "Literata",Georgia,serif;max-width:42rem;margin:0 auto;padding:2rem max(16px,env(safe-area-inset-left,0px)) 3rem}
+header{border-bottom:1px solid var(--rule);margin-bottom:1.5rem}
+h1.title{font-size:1.6rem;line-height:1.2;margin:0 0 .3rem}
+p.author,p.date{margin:0;color:var(--muted);font:400 .9rem "IBM Plex Sans",system-ui,sans-serif}
+p.date{margin-bottom:1rem}
+h2{font:600 1.05rem "IBM Plex Sans",system-ui,sans-serif;margin:2rem 0 .5rem;letter-spacing:.01em}
+a{color:var(--accent)}
+li{margin:.4rem 0}
+.webnote{font:400 .85rem "IBM Plex Sans",system-ui,sans-serif;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:.5rem .75rem;margin:0 0 1.5rem}
+mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
+table{border-collapse:collapse;margin:.75rem 0;font:400 .9rem "IBM Plex Sans",system-ui,sans-serif}
+th,td{border:1px solid var(--rule);padding:.3rem .6rem;text-align:left}
+figure{margin:1rem 0}
+figure img{max-width:100%;height:auto;background:#fff;border:1px solid var(--rule)}
+figcaption{font:400 .8rem "IBM Plex Sans",system-ui,sans-serif;color:var(--muted)}
+h1:not(.title){font:600 1.05rem "IBM Plex Sans",system-ui,sans-serif;margin:1.75rem 0 .4rem}
+h2{font:600 .95rem "IBM Plex Sans",system-ui,sans-serif;margin:1.2rem 0 .3rem}
+
+h2{font-size:1.15rem}
+p.subtitle{margin:0 0 .3rem;color:var(--muted);font:400 .95rem "IBM Plex Sans",system-ui,sans-serif}
+strong{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.95rem}
+em{color:var(--muted)}
+ol li{margin:.5rem 0}
+.footnotes{font-size:.85rem;color:var(--muted);margin-top:2rem}
+</style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<p class="dossier-back" style="margin:0 0 1rem;font:400 .85rem/1.4 system-ui,sans-serif"><a href="../" style="color:inherit">&larr; Teaching</a></p>
+<script id="dossier-back-hide">try{if(window.self!==window.top){document.querySelector(".dossier-back").hidden=true}}catch(e){}</script>
+<header id="title-block-header">
+<h1 class="title">Tutorial 4 Notes (2026–27)</h1>
+<p class="author">William Duan</p>
+<p class="date">September 29, 2026</p>
+</header>
+<p>These notes document what was covered in the tutorial session, for
+the benefit of future TAs. They are not intended as study material for
+students.</p>
+<h2 class="unnumbered" id="topics">Topics</h2>
+<p>A methods session rather than a new-material session: how to prove a
+statement about an optimization problem directly from the structure of
+the problem, instead of solving the problem in closed form and verifying
+the statement afterwards. Three worked questions, chosen so that the
+same lesson appears in three different disguises. (i) A problem-set
+question on a one-person production economy, covering existence of a
+solution, convexity of the solution set, and uniqueness, none of which
+require a demand function. (ii) The slide result that under quasilinear
+utility the demand for every non-numeraire good is independent of
+wealth. (iii) The slide result that when the utility function is
+homogeneous of degree <span class="math inline">\(1\)</span>, the value
+function of the UMP is homogeneous of degree <span
+class="math inline">\(1\)</span> in wealth. Time permitting, a
+problem-set question comparing a commodity tax with a wealth tax, where
+the problem set itself stages the contrast between a closed-form
+comparison and a revealed-preference argument.</p>
+<p>The other two results are on the lecture slides. These notes record
+which points are worth making and why, and leave the derivations to
+whoever is building the session.</p>
+<h2 class="unnumbered" id="objective">Objective</h2>
+<p>One methodological point, made three or four times. Students arrive
+with the undergraduate protocol: posit a functional form, solve the
+first-order conditions, obtain demand in closed form, then inspect it to
+check whatever was asked. The protocol is not so much wrong as
+inapplicable — most of the statements in this course are quantified over
+a class of utility functions, so a closed-form calculation establishes
+one instance and not the claim; many of the problems have no closed form
+at all; and even when a closed form exists, producing it usually buries
+the one hypothesis the question was asking about. The objective is to
+replace that protocol with a different one: read the statement carefully
+enough to see what is quantified over what, identify the structural
+feature of the problem that the conclusion is actually about, and argue
+from that feature directly.</p>
+<h2 class="unnumbered" id="comments">Comments</h2>
+<p>It is worth writing the undergraduate protocol on the board
+explicitly at the start — <em>assume a form, solve, verify</em> — and
+naming the three ways it fails, so that the examples can be pointed back
+at it rather than each being taught as a separate trick. Students do not
+experience themselves as following a protocol; they experience
+themselves as doing the only thing there is to do. Naming it as one
+option among others is most of the work. The replacement offered was:
+write down what is to be proved, separating hypothesis from conclusion
+and noting what is universally quantified; find the structural feature
+the conclusion is really about; prove it from that feature and stop.
+Across the four questions below that feature is different each time,
+which is the point of doing four.</p>
+<p>Two diagnostics were given to students, both of which they can run
+without help, and both worth repeating whenever the occasion arises.
+First: if your proof mentions a functional form and the statement does
+not, you have proved a special case. This is the most common failure
+mode and it is self-detectable. Second: if you finish and find you never
+used one of the stated hypotheses, work out which of the two things
+happened — you made an error, or the hypothesis is not needed. Either is
+worth knowing, and the habit is what makes the minimal-assumptions
+questions tractable.</p>
+<p>The four questions, with the points worth drawing out of each:</p>
+<ul>
+<li><p><em>The production-economy question.</em> Placed first because
+the direct route is not merely better but forced: no functional form is
+given, so there is nothing to differentiate and no first-order condition
+to write. Students cannot fall back on the old protocol, which makes it
+safe ground for demonstrating the new one before applying it where the
+old one would have worked. Read the question’s own preamble aloud — it
+asks for the <em>minimum</em> assumptions and says outright that
+functional forms, derivatives and Lagrangians are not wanted — since a
+fair number of students will have skipped it.</p>
+<p>The point to draw out of the existence part is that the choice of
+formulation is part of the answer. A formulation that writes consumption
+as equalities rather than inequalities has already assumed that nothing
+is thrown away, which is local nonsatiation smuggled in through the
+notation. The lesson is that the formulation determines the hypothesis
+list, so it has to be justified rather than assumed.</p>
+<p>For the convexity part, the useful move is to ask what assumption on
+the primitives makes the feasible set convex. That ties the problem back
+to Tutorial 3, so the assumptions stop looking arbitrary. For
+uniqueness, the principle worth stating is that uniqueness comes from
+making exactly one of the weak inequalities in the convexity argument
+strict, and there is usually more than one place to do it.</p></li>
+<li><p><em>Quasilinear utility, demand independent of wealth
+(slides).</em> Here the lesson bites, because a closed-form route exists
+and most students will have taken it. The direct argument is three lines
+— use monotonicity in the numeraire to eliminate it from the problem,
+and observe that wealth survives only as an additive constant, so the
+argmax cannot depend on it. It needs no differentiability, no concavity,
+no interiority and no functional form.</p>
+<p>The point most worth making is about the consumption set. The
+statement puts the numeraire on all of <span
+class="math inline">\((-\infty,\infty)\)</span>, and students read this
+as a typographical curiosity; it is in fact the hypothesis that makes
+the theorem true, because with a non-negativity constraint on the
+numeraire the reduced problem inherits a wealth-dependent constraint and
+the conclusion genuinely fails at low wealth. Asking the class why the
+consumption set is written that way is the fastest available test of
+whether anyone has read the statement.</p>
+<p>It is worth putting the first-order-condition route on the board next
+to the direct one. It is a correct proof, and comparing them side by
+side makes the cost visible: it buys differentiability, interiority and
+enough concavity for sufficiency, in exchange for nothing. Also flag the
+pairing with the problem-set question that runs the implication in the
+opposite direction — from observed wealth-independent demand back to the
+class of utility functions — since students tend to treat the two as
+unrelated questions.</p></li>
+<li><p><em>Homogeneous utility, value function homogeneous of degree 1
+in wealth (slides).</em> The proof is a change of variables and nothing
+else: the budget set scales with wealth, the objective is homogeneous,
+and the result falls out. Exactly two facts do the work, and it is worth
+pausing to name them, because everything else — the number of goods, the
+shape of the utility function, differentiability, convexity — is
+irrelevant. A quick comprehension check that worked well: ask which of
+the two facts fails if a quantity constraint on one good is added, and
+whether the result survives.</p>
+<p>The closed-form route here is Cobb-Douglas: compute the indirect
+utility function, observe it is linear in wealth, declare victory. Worth
+saying explicitly that this establishes one case out of infinitely many,
+and worse, leaves the impression that the result has something to do
+with Cobb-Douglas when it has nothing to do with any functional form.
+The formulation I used: a verified example is evidence that a statement
+is worth trying to prove, and is never a proof.</p>
+<p>The subtlety worth spending real time on is that this is a statement
+about a representation, not about a preference. The value function is
+not an ordinal object — replacing the utility function by its square
+gives the same preference and a value function homogeneous of degree
+<span class="math inline">\(2\)</span> — so the degree-<span
+class="math inline">\(1\)</span> property belongs to the utility
+function chosen. What belongs to the preference is homotheticity,
+i.e. homogeneity of degree <span class="math inline">\(1\)</span> of
+<em>demand</em>, since the argmax survives strictly increasing
+transformations while the max does not. This is a direct callback to the
+Tutorial 2 discussion of representation theorems and should be flagged
+as such. Combined with the fact that a preference is homothetic if and
+only if some representation is homogeneous of degree <span
+class="math inline">\(1\)</span>, the correct statement is that for a
+homothetic preference one may always <em>choose</em> a representation
+whose value function is linear in wealth. Worth writing on the board in
+that form, because the loose version (“homothetic preferences have value
+functions linear in wealth”) is false as stated, and is what students
+will otherwise carry away.</p></li>
+<li><p><em>Commodity tax versus wealth tax.</em> Kept as the closing
+item and treated as expendable if the session runs long. It suits the
+purpose because the problem set stages the contrast itself, asking for
+the welfare comparison first under a specific functional form and then
+for arbitrary locally nonsatiated preferences by revealed preference.
+Students who work in order will have done both halves without noticing
+that the general argument contains the specific one. Making them go back
+and say what the functional-form computation was <em>for</em> is the
+exercise, and it costs nothing to set up because they have already done
+both halves. Reading off from a proof exactly how much it can and cannot
+deliver, here whether the comparison comes out weak or strict, is a
+skill in its own right and this is a good place to practise it.</p>
+<p>Two things to say in closing. The shape of the argument is not new —
+a bundle was available and not chosen, therefore the chosen bundle is at
+least as good — which is the revealed-preference logic from Tutorial 1
+reused; saying so helps, because students tend to file WARP as week-one
+abstraction rather than as a tool they are expected to reach for. And
+the economics behind the comparison, the excess burden of commodity
+taxation, returns later in the course.</p></li>
+</ul>
+<h2 class="unnumbered" id="practical-notes">Practical notes</h2>
+<p>The ordering was chosen deliberately and is the part of this session
+most worth preserving. The production-economy question goes first
+because the old protocol is unavailable there, so the new one can be
+demonstrated without any argument about whether it is necessary. The two
+slide results go second, because there the old protocol <em>would</em>
+have worked, and the comparison is the whole lesson. The tax question
+goes last, because by then the point has been made three times and the
+students can supply the short argument themselves.</p>
+<p>Both problem-set questions were live when this session ran. They were
+discussed as method rather than delivered as solutions — the structure
+of each argument was worked out on the board and the write-up left to
+the students. A future TA should check the posting and due dates before
+deciding how much of the problem set to put up; if the timing is
+unfavourable, the two slide results plus one substitute question of the
+same shape will carry the session.</p>
+<p>If the session runs short, the most useful filler is to take any
+statement from the slides that students have already seen proved by
+computation and ask for a direct proof instead. The supply is large —
+homogeneity of degree <span class="math inline">\(0\)</span> of
+Marshallian demand, Walras’ Law, monotonicity of the expenditure
+function — and the exercise is the same every time.</p>
+</body>
+</html>
