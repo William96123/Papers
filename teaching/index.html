@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Teaching Dossier · William Duan</title>
-<meta name="description" content="Teaching dossier of William Duan, Vancouver School of Economics, UBC: evaluation reports and teaching materials, organized by course.">
+<title>Teaching · William Duan</title>
+<meta name="description" content="Teaching materials and evaluations of William Duan, Vancouver School of Economics, UBC, organized by course.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -95,6 +95,14 @@ tr.detail td{background:var(--paper);white-space:normal}
 .sitecard{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:1.25rem 1.4rem;display:grid;gap:.6rem;max-width:var(--col)}
 .sitecard .url{font:500 .95rem var(--mono)}
 footer{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--rule);font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.5rem 1.5rem}
+/* site navigation */
+.sitenav{position:sticky;top:0;z-index:5;display:flex;gap:.25rem;align-items:center;overflow-x:auto;scrollbar-width:thin;background:var(--paper);border-bottom:1px solid var(--rule);padding:.6rem 0;font-size:.9rem;white-space:nowrap}
+.sitenav a{padding:.3rem .65rem;border-radius:999px;text-decoration:none;color:var(--ink);border:1px solid transparent}
+.sitenav a:hover{border-color:var(--rule)}
+.sitenav a[aria-current="page"]{background:var(--accent-soft);color:var(--accent);font-weight:500}
+.sitenav .sep{width:1px;align-self:stretch;background:var(--rule);margin:0 .35rem;flex:none}
+.frame.pdf{aspect-ratio:auto;height:85vh;min-height:30rem}
+.boxbar .openlink{margin-left:auto;padding:.5rem .8rem}
 /* views */
 .js-views .view{display:none}
 .js-views .view.on{display:grid}
@@ -130,12 +138,25 @@ nav.courses a:hover{border-color:var(--accent)}
 
 <div class="wrap">
 
+<nav class="sitenav" aria-label="Sections">
+  <a href="#home" data-v="home">Overview</a>
+  <a href="#dossier" data-v="dossier">Teaching dossier</a>
+  <span class="sep" aria-hidden="true"></span>
+  <a href="#mathcamp" data-v="mathcamp">Math Camp</a>
+  <a href="#econ600" data-v="econ600">ECON 600</a>
+  <a href="#econ601" data-v="econ601">ECON 601</a>
+  <a href="#econ514" data-v="econ514">ECON 514</a>
+  <a href="#econ101" data-v="econ101">ECON 101</a>
+  <a href="#econ303" data-v="econ303">ECON 303</a>
+  <a href="#econ355" data-v="econ355">ECON 355</a>
+</nav>
+
 <div class="view" id="home">
 <header class="top">
-  <span class="eyebrow">Teaching dossier</span>
+  <span class="eyebrow">Teaching</span>
   <h1>William Duan</h1>
   <p class="byline">Vancouver School of Economics, University of British Columbia</p>
-  <p class="prose">Organized by course. Each course lists its official evaluation reports and, where available, teaching materials.</p>
+  <p class="prose">Teaching materials and evaluations, organized by course. Each course lists its official evaluation reports and, where available, materials I wrote for it. The teaching dossier brings the main record together in one document.</p>
   <ul class="facts">
     <li><b>16</b> evaluation reports, 2019–2026</li>
     <li><b>189</b> student responses</li>
@@ -143,9 +164,9 @@ nav.courses a:hover{border-color:var(--accent)}
     <li>Agustín Beltrán Award for Excellence in Teaching, <b>2024, 2025, 2026</b></li>
   </ul>
   <nav class="links" aria-label="Documents">
+    <a href="#dossier">Teaching dossier</a>
     <a target="_blank" rel="noopener" href="https://william96123.github.io/teaching-statement.pdf">Teaching statement (PDF)</a>
     <a target="_blank" rel="noopener" href="https://william96123.github.io/teaching-evaluations.pdf">Teaching evaluations, combined (PDF)</a>
-    <a target="_blank" rel="noopener" href="https://william96123.github.io/cv.pdf">CV (PDF)</a>
   </nav>
 </header>
 
@@ -161,9 +182,21 @@ nav.courses a:hover{border-color:var(--accent)}
 </section>
 </div>
 
+<!-- ============ DOSSIER ============ -->
+<section class="course-sec view" id="dossier" aria-labelledby="h-dos">
+  <header>
+    <h2 id="h-dos"><span class="code">PDF · 32 pages</span>Teaching dossier</h2>
+    <p class="role"><span>November 2026</span><span>Teaching statement, record, evidence of effectiveness and sample materials</span></p>
+  </header>
+  <div class="box">
+    <div class="boxbar"><span class="boxtitle">William_Duan_Teaching_Dossier.pdf</span><a target="_blank" rel="noopener" class="openlink" href="teaching-dossier.pdf">Open full page</a></div>
+    <div class="frame pdf"><iframe src="teaching-dossier.pdf" title="Teaching dossier (PDF)" loading="lazy"></iframe></div>
+  </div>
+  <p class="note">If the document does not display here, <a target="_blank" rel="noopener" href="teaching-dossier.pdf">open the PDF</a>.</p>
+</section>
+
 <!-- ============ MATH CAMP ============ -->
 <section class="course-sec view" id="mathcamp" aria-labelledby="h-mc">
-  <nav class="crumbs" aria-label="Dossier"><a href="#home">&larr; All courses</a><span>William Duan · Teaching dossier</span></nav>
   <header>
     <h2 id="h-mc"><span class="code">Math Camp</span>UBC Economics Math Camp</h2>
     <p class="role"><span>Instructor</span><span>MA and PhD math camps</span><span>Summer 2026</span></p>
@@ -215,7 +248,6 @@ nav.courses a:hover{border-color:var(--accent)}
 
 <!-- ============ ECON 600 ============ -->
 <section class="course-sec view" id="econ600" aria-labelledby="h-600">
-  <nav class="crumbs" aria-label="Dossier"><a href="#home">&larr; All courses</a><span>William Duan · Teaching dossier</span></nav>
   <header>
     <h2 id="h-600"><span class="code">ECON 600</span>Advanced Microeconomic Theory I</h2>
     <p class="role"><span>PhD core</span><span>Teaching assistant</span><span>Every fall since 2021</span></p>
@@ -268,7 +300,6 @@ nav.courses a:hover{border-color:var(--accent)}
 
 <!-- ============ ECON 601 ============ -->
 <section class="course-sec view" id="econ601" aria-labelledby="h-601">
-  <nav class="crumbs" aria-label="Dossier"><a href="#home">&larr; All courses</a><span>William Duan · Teaching dossier</span></nav>
   <header>
     <h2 id="h-601"><span class="code">ECON 601</span>Advanced Microeconomic Theory II</h2>
     <p class="role"><span>PhD core</span><span>Teaching assistant</span><span>Every winter term since 2022</span></p>
@@ -296,7 +327,6 @@ nav.courses a:hover{border-color:var(--accent)}
 
 <!-- ============ ECON 514 ============ -->
 <section class="course-sec view" id="econ514" aria-labelledby="h-514">
-  <nav class="crumbs" aria-label="Dossier"><a href="#home">&larr; All courses</a><span>William Duan · Teaching dossier</span></nav>
   <header>
     <h2 id="h-514"><span class="code">ECON 514</span>Information and Incentives</h2>
     <p class="role"><span>MA</span><span>Teaching assistant</span><span>Winter 2021</span></p>
@@ -308,7 +338,6 @@ nav.courses a:hover{border-color:var(--accent)}
 
 <!-- ============ ECON 101 ============ -->
 <section class="course-sec view" id="econ101" aria-labelledby="h-101">
-  <nav class="crumbs" aria-label="Dossier"><a href="#home">&larr; All courses</a><span>William Duan · Teaching dossier</span></nav>
   <header>
     <h2 id="h-101"><span class="code">ECON 101</span>Principles of Microeconomics</h2>
     <p class="role"><span>First year</span><span>Teaching assistant, discussion sections</span><span>Fall 2020 and Summer 2025</span></p>
@@ -341,7 +370,6 @@ nav.courses a:hover{border-color:var(--accent)}
 
 <!-- ============ ECON 303 ============ -->
 <section class="course-sec view" id="econ303" aria-labelledby="h-303">
-  <nav class="crumbs" aria-label="Dossier"><a href="#home">&larr; All courses</a><span>William Duan · Teaching dossier</span></nav>
   <header>
     <h2 id="h-303"><span class="code">ECON 303</span>Intermediate Microeconomic Analysis II</h2>
     <p class="role"><span>Third year</span><span>Teaching assistant, tutorials</span><span>Winter 2020</span></p>
@@ -353,7 +381,6 @@ nav.courses a:hover{border-color:var(--accent)}
 
 <!-- ============ ECON 355 ============ -->
 <section class="course-sec view" id="econ355" aria-labelledby="h-355">
-  <nav class="crumbs" aria-label="Dossier"><a href="#home">&larr; All courses</a><span>William Duan · Teaching dossier</span></nav>
   <header>
     <h2 id="h-355"><span class="code">ECON 355</span>Introduction to International Trade</h2>
     <p class="role"><span>Third year</span><span>Teaching assistant</span><span>Fall 2019</span></p>
@@ -366,7 +393,7 @@ nav.courses a:hover{border-color:var(--accent)}
 
 <footer>
   <span>William Duan · Vancouver School of Economics, UBC</span>
-  <span>Updated October 2026</span>
+  <span>Updated November 2026</span>
   <a target="_blank" rel="noopener" href="https://sites.google.com/view/william-duan/home">Personal website</a>
 </footer>
 </div>
@@ -417,7 +444,7 @@ const DATA = [{"term": "Fall 2019", "year": 2019, "code": "ECON 355", "title": "
 (function(){
   var views=[].slice.call(document.querySelectorAll('.view'));
   var order=['mathcamp','econ600','econ601','econ514','econ101','econ303','econ355'];
-  var names={mathcamp:'Math Camp',econ600:'ECON 600',econ601:'ECON 601',econ514:'ECON 514',econ101:'ECON 101',econ303:'ECON 303',econ355:'ECON 355'};
+  var names={dossier:'Teaching dossier',mathcamp:'Math Camp',econ600:'ECON 600',econ601:'ECON 601',econ514:'ECON 514',econ101:'ECON 101',econ303:'ECON 303',econ355:'ECON 355'};
   var base=document.title;
   document.documentElement.classList.add('js-views');
   order.forEach(function(id,i){var n=document.querySelector('[data-next-for="'+id+'"]'); if(!n) return;
@@ -425,10 +452,15 @@ const DATA = [{"term": "Fall 2019", "year": 2019, "code": "ECON 355", "title": "
   function show(){
     var id=(location.hash||'').slice(1); if(!document.getElementById(id)||!document.getElementById(id).classList.contains('view')) id='home';
     views.forEach(function(v){v.classList.toggle('on',v.id===id);});
+    [].forEach.call(document.querySelectorAll('.sitenav a'),function(a){if(a.dataset.v===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
     document.title=id==='home'?base:names[id]+' · '+base;
+    var cur=document.querySelector('.sitenav [aria-current]'), nav=document.querySelector('.sitenav');
+    if(cur&&nav) nav.scrollLeft=cur.offsetLeft-(nav.clientWidth-cur.offsetWidth)/2;
     window.scrollTo(0,0);
   }
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
   window.addEventListener('hashchange',show); show();
+  window.addEventListener('load',function(){window.scrollTo(0,0);});
 })();
 </script>
 
